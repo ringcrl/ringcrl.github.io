@@ -5,4 +5,8 @@ order: 4
 ---
 
 
-> **Note**: Add Markdown syntax content to file `_tabs/about.md` and it will show up on this page.
+- WeChat: ringcrl
+- Blog: [https://www.chenng.cn](https://www.chenng.cn)
+- Notes: [https://ringcrl.github.io/cs-notes](https://ringcrl.github.io/cs-notes)
+- Github: [https://github.com/ringcrl](https://github.com/ringcrl)
+
