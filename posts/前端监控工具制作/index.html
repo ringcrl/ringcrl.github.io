@@ -1,0 +1,319 @@
+<!DOCTYPE html><html lang="zh-CN" ><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"><meta name="generator" content="Jekyll v4.3.3" /><meta property="og:title" content="前端监控工具制作" /><meta property="og:locale" content="zh_CN" /><meta name="description" content="原生监控 lighthouse api" /><meta property="og:description" content="原生监控 lighthouse api" /><link rel="canonical" href="chenng.cn/posts/%E5%89%8D%E7%AB%AF%E7%9B%91%E6%8E%A7%E5%B7%A5%E5%85%B7%E5%88%B6%E4%BD%9C/" /><meta property="og:url" content="chenng.cn/posts/%E5%89%8D%E7%AB%AF%E7%9B%91%E6%8E%A7%E5%B7%A5%E5%85%B7%E5%88%B6%E4%BD%9C/" /><meta property="og:site_name" content="Chenng’s Home" /><meta property="og:type" content="article" /><meta property="article:published_time" content="2018-11-10T00:00:00+08:00" /><meta name="twitter:card" content="summary" /><meta property="twitter:title" content="前端监控工具制作" /><meta name="google-site-verification" content="google_meta_tag_verification" /> <script type="application/ld+json"> {"@context":"https://schema.org","@type":"BlogPosting","dateModified":"2018-11-10T00:00:00+08:00","datePublished":"2018-11-10T00:00:00+08:00","description":"原生监控 lighthouse api","headline":"前端监控工具制作","mainEntityOfPage":{"@type":"WebPage","@id":"chenng.cn/posts/%E5%89%8D%E7%AB%AF%E7%9B%91%E6%8E%A7%E5%B7%A5%E5%85%B7%E5%88%B6%E4%BD%9C/"},"url":"chenng.cn/posts/%E5%89%8D%E7%AB%AF%E7%9B%91%E6%8E%A7%E5%B7%A5%E5%85%B7%E5%88%B6%E4%BD%9C/"}</script><title>前端监控工具制作 | Chenng's Home</title><link rel="apple-touch-icon" sizes="180x180" href="/assets/img/favicons/apple-touch-icon.png"><link rel="icon" type="image/png" sizes="32x32" href="/assets/img/favicons/favicon-32x32.png"><link rel="icon" type="image/png" sizes="16x16" href="/assets/img/favicons/favicon-16x16.png"><link rel="manifest" href="/assets/img/favicons/site.webmanifest"><link rel="shortcut icon" href="/assets/img/favicons/favicon.ico"><meta name="apple-mobile-web-app-title" content="Chenng's Home"><meta name="application-name" content="Chenng's Home"><meta name="msapplication-TileColor" content="#da532c"><meta name="msapplication-config" content="/assets/img/favicons/browserconfig.xml"><meta name="theme-color" content="#ffffff"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="anonymous"><link rel="dns-prefetch" href="https://fonts.gstatic.com"><link rel="preconnect" href="https://www.google-analytics.com" crossorigin="use-credentials"><link rel="dns-prefetch" href="https://www.google-analytics.com"><link rel="preconnect" href="https://www.googletagmanager.com" crossorigin="anonymous"><link rel="dns-prefetch" href="https://www.googletagmanager.com"><link rel="preconnect" href="https://cdn.jsdelivr.net"><link rel="dns-prefetch" href="https://cdn.jsdelivr.net"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.11.2/css/all.min.css"><link rel="stylesheet" href="/assets/css/style.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/afeld/bootstrap-toc@1.0.1/dist/bootstrap-toc.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/magnific-popup@1.1.0/dist/magnific-popup.min.css"> <script src="https://cdn.jsdelivr.net/npm/jquery@3/dist/jquery.min.js"></script> <script defer src="https://cdn.jsdelivr.net/combine/npm/popper.js@1.15.0,npm/bootstrap@4/dist/js/bootstrap.min.js"></script> <script async src="https://cdn.jsdelivr.net/combine/npm/lozad/dist/lozad.min.js,npm/magnific-popup@1/dist/jquery.magnific-popup.min.js"></script> <script defer src="/assets/js/dist/post.min.js"></script> <script defer src="/app.js"></script> <script defer src="https://www.googletagmanager.com/gtag/js?id="></script> <script> document.addEventListener("DOMContentLoaded", function(event) { window.dataLayer = window.dataLayer || []; function gtag(){dataLayer.push(arguments);} gtag('js', new Date()); gtag('config', ''); }); </script><body data-spy="scroll" data-target="#toc"><div id="sidebar" class="d-flex flex-column align-items-end"><div class="profile-wrapper text-center"><div id="avatar"> <a href="/" alt="avatar" class="mx-auto"> <img src="https://cdn-1257430323.cos.ap-guangzhou.myqcloud.com/assets/imgs/20210506201457_0026033cb6769057453d0142751005ae.jpg" alt="avatar" onerror="this.style.display='none'"> </a></div><div class="site-title mt-3"> <a href="/">Chenng's Home</a></div><div class="site-subtitle font-italic"></div></div><ul class="w-100"><li class="nav-item"> <a href="/" class="nav-link"> <i class="fa-fw fas fa-home ml-xl-3 mr-xl-3 unloaded"></i> <span>HOME</span> </a><li class="nav-item"> <a href="/categories/" class="nav-link"> <i class="fa-fw fas fa-stream ml-xl-3 mr-xl-3 unloaded"></i> <span>CATEGORIES</span> </a><li class="nav-item"> <a href="/tags/" class="nav-link"> <i class="fa-fw fas fa-tags ml-xl-3 mr-xl-3 unloaded"></i> <span>TAGS</span> </a><li class="nav-item"> <a href="/archives/" class="nav-link"> <i class="fa-fw fas fa-archive ml-xl-3 mr-xl-3 unloaded"></i> <span>ARCHIVES</span> </a><li class="nav-item"> <a href="/about/" class="nav-link"> <i class="fa-fw fas fa-info ml-xl-3 mr-xl-3 unloaded"></i> <span>ABOUT</span> </a></ul><div class="sidebar-bottom mt-auto d-flex flex-wrap justify-content-center"> <a href="https://github.com/ringcrl" aria-label="github" class="order-3" target="_blank" rel="noopener"> <i class="fab fa-github-alt"></i> </a> <a href=" javascript:location.href = 'mailto:' + ['ringcrl','foxmail.com'].join('@')" aria-label="email" class="order-4" > <i class="fas fa-envelope"></i> </a> <a href="/feed.xml" aria-label="rss" class="order-5" > <i class="fas fa-rss"></i> </a> <span class="icon-border order-2"></span> <span id="mode-toggle-wrapper" class="order-1"> <i class="mode-toggle fas fa-adjust"></i> <script type="text/javascript"> class ModeToggle { static get MODE_KEY() { return "mode"; } static get DARK_MODE() { return "dark"; } static get LIGHT_MODE() { return "light"; } constructor() { if (this.hasMode) { if (this.isDarkMode) { if (!this.isSysDarkPrefer) { this.setDark(); } } else { if (this.isSysDarkPrefer) { this.setLight(); } } } var self = this; /* always follow the system prefers */ this.sysDarkPrefers.addListener(function() { if (self.hasMode) { if (self.isDarkMode) { if (!self.isSysDarkPrefer) { self.setDark(); } } else { if (self.isSysDarkPrefer) { self.setLight(); } } self.clearMode(); } self.updateMermaid(); }); } /* constructor() */ setDark() { $('html').attr(ModeToggle.MODE_KEY, ModeToggle.DARK_MODE); sessionStorage.setItem(ModeToggle.MODE_KEY, ModeToggle.DARK_MODE); } setLight() { $('html').attr(ModeToggle.MODE_KEY, ModeToggle.LIGHT_MODE); sessionStorage.setItem(ModeToggle.MODE_KEY, ModeToggle.LIGHT_MODE); } clearMode() { $('html').removeAttr(ModeToggle.MODE_KEY); sessionStorage.removeItem(ModeToggle.MODE_KEY); } get sysDarkPrefers() { return window.matchMedia("(prefers-color-scheme: dark)"); } get isSysDarkPrefer() { return this.sysDarkPrefers.matches; } get isDarkMode() { return this.mode == ModeToggle.DARK_MODE; } get isLightMode() { return this.mode == ModeToggle.LIGHT_MODE; } get hasMode() { return this.mode != null; } get mode() { return sessionStorage.getItem(ModeToggle.MODE_KEY); } /* get the current mode on screen */ get modeStatus() { if (this.isDarkMode || (!this.hasMode && this.isSysDarkPrefer) ) { return ModeToggle.DARK_MODE; } else { return ModeToggle.LIGHT_MODE; } } updateMermaid() { if (typeof mermaid !== "undefined") { let expectedTheme = (this.modeStatus === ModeToggle.DARK_MODE? "dark" : "default"); let config = { theme: expectedTheme }; /* re-render the SVG › <https://github.com/mermaid-js/mermaid/issues/311#issuecomment-332557344> */ $(".mermaid").each(function() { let svgCode = $(this).prev().children().html(); $(this).removeAttr("data-processed"); $(this).html(svgCode); }); mermaid.initialize(config); mermaid.init(undefined, ".mermaid"); } } flipMode() { if (this.hasMode) { if (this.isSysDarkPrefer) { if (this.isLightMode) { this.clearMode(); } else { this.setLight(); } } else { if (this.isDarkMode) { this.clearMode(); } else { this.setDark(); } } } else { if (this.isSysDarkPrefer) { this.setLight(); } else { this.setDark(); } } this.updateMermaid(); } /* flipMode() */ } /* ModeToggle */ let toggle = new ModeToggle(); $(".mode-toggle").click(function() { toggle.flipMode(); }); </script> </span></div></div><div id="topbar-wrapper" class="row justify-content-center topbar-down"><div id="topbar" class="col-11 d-flex h-100 align-items-center justify-content-between"> <span id="breadcrumb"> <span> <a href="/"> Posts </a> </span> <span>前端监控工具制作</span> </span> <i id="sidebar-trigger" class="fas fa-bars fa-fw"></i><div id="topbar-title"> Post</div><i id="search-trigger" class="fas fa-search fa-fw"></i> <span id="search-wrapper" class="align-items-center"> <i class="fas fa-search fa-fw"></i> <input class="form-control" id="search-input" type="search" aria-label="search" autocomplete="off" placeholder="Search..."> <i class="fa fa-times-circle fa-fw" id="search-cleaner"></i> </span> <span id="search-cancel" >Cancel</span></div></div><div id="main-wrapper"><div id="main"><div class="row"><div id="post-wrapper" class="col-12 col-lg-11 col-xl-8"><div class="post pl-1 pr-1 pl-sm-2 pr-sm-2 pl-md-4 pr-md-4"><h1 data-toc-skip>前端监控工具制作</h1><div class="post-meta text-muted d-flex flex-column"><div> <span class="semi-bold"> chenng </span> <span class="timeago " data-toggle="tooltip" data-placement="bottom" title="Sat, Nov 10, 2018, 12:00 AM +0800" prep="on" > Nov 10, 2018 <i class="unloaded">2018-11-10T00:00:00+08:00</i> </span></div><div> <span class="readtime" data-toggle="tooltip" data-placement="bottom" title="833 words">4 min</span></div></div><div class="post-content"><ul><li>原生监控<li>lighthouse api</ul><p>公司项目多起来之后, 文档的作用虽然大, 但是起不到强制约束的作用, 例如部分项目没有正确使用 CDN 等。这时候我们可以利用 lighthouse 提供的 api 制作自己公司的校验军规。</p><h1 id="原生监控">原生监控</h1><p>主要利用了 <code class="language-plaintext highlighter-rouge">Window.performance</code> 的 API。</p><p><img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-src="https://cdn-1257430323.cos.ap-guangzhou.myqcloud.com/assets/imgs/20210505083030_5e6308e8f7164f4d3c1fdb2dc24b0b6b.png" alt="01.png" /></p><h2 id="页面性能">页面性能</h2><div class="language-ts highlighter-rouge"><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47
+48
+49
+50
+51
+52
+53
+54
+55
+56
+57
+58
+59
+60
+61
+</pre><td class="rouge-code"><pre><span class="kd">class</span> <span class="nc">Perf</span> <span class="p">{</span>
+  <span class="nf">init</span><span class="p">(</span><span class="nx">cb</span><span class="p">:</span> <span class="nb">Function</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nb">window</span><span class="p">.</span><span class="nf">addEventListener</span><span class="p">(</span>
+      <span class="dl">"</span><span class="s2">load</span><span class="dl">"</span><span class="p">,</span>
+      <span class="p">()</span> <span class="o">=&gt;</span> <span class="p">{</span>
+        <span class="k">this</span><span class="p">.</span><span class="nf">check</span><span class="p">(</span><span class="nx">cb</span><span class="p">);</span>
+      <span class="p">},</span>
+      <span class="kc">false</span>
+    <span class="p">);</span>
+  <span class="p">}</span>
+
+  <span class="nf">check</span><span class="p">(</span><span class="nx">cb</span><span class="p">:</span> <span class="nb">Function</span><span class="p">)</span> <span class="p">{</span>
+    <span class="kd">let</span> <span class="nx">timer</span><span class="p">;</span>
+
+    <span class="k">if </span><span class="p">(</span><span class="nx">performance</span><span class="p">.</span><span class="nx">timing</span><span class="p">.</span><span class="nx">loadEventEnd</span><span class="p">)</span> <span class="p">{</span>
+      <span class="nf">clearTimeout</span><span class="p">(</span><span class="nx">timer</span><span class="p">);</span>
+      <span class="k">this</span><span class="p">.</span><span class="nf">load</span><span class="p">(</span><span class="nx">cb</span><span class="p">);</span>
+    <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+      <span class="nx">timer</span> <span class="o">=</span> <span class="nf">setTimeout</span><span class="p">(()</span> <span class="o">=&gt;</span> <span class="p">{</span>
+        <span class="k">this</span><span class="p">.</span><span class="nf">check</span><span class="p">(</span><span class="nx">cb</span><span class="p">);</span>
+      <span class="p">},</span> <span class="mi">100</span><span class="p">);</span>
+    <span class="p">}</span>
+  <span class="p">}</span>
+
+  <span class="nf">load</span><span class="p">(</span><span class="nx">cb</span><span class="p">:</span> <span class="nb">Function</span><span class="p">)</span> <span class="p">{</span>
+    <span class="kd">const</span> <span class="nx">performanceTiming</span> <span class="o">=</span> <span class="nx">performance</span><span class="p">.</span><span class="nx">timing</span><span class="p">;</span>
+    <span class="kd">const</span> <span class="nx">performanceTimingData</span> <span class="o">=</span> <span class="k">this</span><span class="p">.</span><span class="nf">processPerformance</span><span class="p">(</span><span class="nx">performanceTiming</span><span class="p">);</span>
+    <span class="nf">cb</span><span class="p">(</span><span class="nx">performanceTimingData</span><span class="p">);</span>
+  <span class="p">}</span>
+
+  <span class="nf">processPerformance</span><span class="p">(</span><span class="nx">p</span><span class="p">:</span> <span class="nx">PerformanceTiming</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="p">{</span>
+      <span class="na">prevPage</span><span class="p">:</span> <span class="nx">p</span><span class="p">.</span><span class="nx">fetchStart</span> <span class="o">-</span> <span class="nx">p</span><span class="p">.</span><span class="nx">navigationStart</span><span class="p">,</span> <span class="c1">// 上一个页面到这个页面的时长</span>
+      <span class="na">redirect</span><span class="p">:</span> <span class="nx">p</span><span class="p">.</span><span class="nx">redirectEnd</span> <span class="o">-</span> <span class="nx">p</span><span class="p">.</span><span class="nx">redirectStart</span><span class="p">,</span> <span class="c1">// 重定向的时长</span>
+      <span class="na">dns</span><span class="p">:</span> <span class="nx">p</span><span class="p">.</span><span class="nx">domainLookupEnd</span> <span class="o">-</span> <span class="nx">p</span><span class="p">.</span><span class="nx">connectStart</span><span class="p">,</span> <span class="c1">// dns 解析的时长</span>
+      <span class="na">connect</span><span class="p">:</span> <span class="nx">p</span><span class="p">.</span><span class="nx">connectEnd</span> <span class="o">-</span> <span class="nx">p</span><span class="p">.</span><span class="nx">connectStart</span><span class="p">,</span> <span class="c1">// tcp 连接的时长</span>
+      <span class="na">send</span><span class="p">:</span> <span class="nx">p</span><span class="p">.</span><span class="nx">responseEnd</span> <span class="o">-</span> <span class="nx">p</span><span class="p">.</span><span class="nx">requestStart</span><span class="p">,</span> <span class="c1">// 响应结束到请求结束</span>
+      <span class="na">ttfb</span><span class="p">:</span> <span class="nx">p</span><span class="p">.</span><span class="nx">responseStart</span> <span class="o">-</span> <span class="nx">p</span><span class="p">.</span><span class="nx">navigationStart</span><span class="p">,</span> <span class="c1">// 首字节接收到的时长</span>
+      <span class="na">domReady</span><span class="p">:</span> <span class="nx">p</span><span class="p">.</span><span class="nx">domInteractive</span> <span class="o">-</span> <span class="nx">p</span><span class="p">.</span><span class="nx">domLoading</span><span class="p">,</span> <span class="c1">// DOM 准备时长</span>
+      <span class="na">whiteScreen</span><span class="p">:</span> <span class="nx">p</span><span class="p">.</span><span class="nx">domLoading</span> <span class="o">-</span> <span class="nx">p</span><span class="p">.</span><span class="nx">navigationStart</span><span class="p">,</span> <span class="c1">// 白屏时长</span>
+      <span class="na">domParse</span><span class="p">:</span> <span class="nx">p</span><span class="p">.</span><span class="nx">domComplete</span> <span class="o">-</span> <span class="nx">p</span><span class="p">.</span><span class="nx">domLoading</span><span class="p">,</span> <span class="c1">// DOM 解析时长</span>
+      <span class="na">load</span><span class="p">:</span> <span class="nx">p</span><span class="p">.</span><span class="nx">loadEventEnd</span> <span class="o">-</span> <span class="nx">p</span><span class="p">.</span><span class="nx">loadEventStart</span><span class="p">,</span> <span class="c1">// onload 的执行时间</span>
+      <span class="na">total</span><span class="p">:</span> <span class="nx">p</span><span class="p">.</span><span class="nx">loadEventEnd</span> <span class="o">-</span> <span class="nx">p</span><span class="p">.</span><span class="nx">navigationStart</span><span class="p">,</span> <span class="c1">// 总的加载时长</span>
+    <span class="p">};</span>
+  <span class="p">}</span>
+
+  <span class="nf">formatObj</span><span class="p">(</span><span class="nx">data</span><span class="p">)</span> <span class="p">{</span>
+    <span class="kd">const</span> <span class="nx">arr</span> <span class="o">=</span> <span class="p">[];</span>
+    <span class="k">for </span><span class="p">(</span><span class="kd">let</span> <span class="nx">key</span> <span class="k">in</span> <span class="nx">data</span><span class="p">)</span> <span class="p">{</span>
+      <span class="nx">arr</span><span class="p">.</span><span class="nf">push</span><span class="p">(</span><span class="s2">`</span><span class="p">${</span><span class="nx">key</span><span class="p">}</span><span class="s2">=</span><span class="p">${</span><span class="nx">data</span><span class="p">[</span><span class="nx">key</span><span class="p">]}</span><span class="s2">`</span><span class="p">);</span>
+    <span class="p">}</span>
+    <span class="k">return</span> <span class="nx">arr</span><span class="p">.</span><span class="nf">join</span><span class="p">(</span><span class="dl">"</span><span class="s2">&amp;</span><span class="dl">"</span><span class="p">);</span> <span class="c1">// {a: 1, b: 2} =&gt; a=1&amp;b=2</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="kd">const</span> <span class="nx">perf</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">Perf</span><span class="p">();</span>
+<span class="nx">perf</span><span class="p">.</span><span class="nf">init</span><span class="p">((</span><span class="nx">data</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+  <span class="c1">// 图片也是请求，可以被服务器记录，并且不存在跨域问题</span>
+  <span class="k">new</span> <span class="nc">Image</span><span class="p">().</span><span class="nx">src</span> <span class="o">=</span> <span class="dl">"</span><span class="s2">/pic.gif?</span><span class="dl">"</span> <span class="o">+</span> <span class="nx">perf</span><span class="p">.</span><span class="nf">formatObj</span><span class="p">(</span><span class="nx">data</span><span class="p">);</span>
+  <span class="nx">console</span><span class="p">.</span><span class="nf">log</span><span class="p">(</span><span class="nx">data</span><span class="p">);</span>
+<span class="p">});</span>
+</pre></table></code></div></div><h2 id="静态资源加载情况">静态资源加载情况</h2><div class="language-ts highlighter-rouge"><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+</pre><td class="rouge-code"><pre><span class="kd">class</span> <span class="nc">Resource</span> <span class="p">{</span>
+  <span class="nf">init</span><span class="p">(</span><span class="nx">cb</span><span class="p">:</span> <span class="nb">Function</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nb">window</span><span class="p">.</span><span class="nx">onload</span> <span class="o">=</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="p">{</span>
+      <span class="kd">let</span> <span class="nx">resources</span> <span class="o">=</span> <span class="nx">performance</span><span class="p">.</span><span class="nf">getEntries</span><span class="p">();</span>
+      <span class="kd">let</span> <span class="nx">data</span> <span class="o">=</span> <span class="nx">resources</span><span class="p">.</span><span class="nf">map</span><span class="p">((</span><span class="nx">resource</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="k">this</span><span class="p">.</span><span class="nf">processData</span><span class="p">(</span><span class="nx">resource</span><span class="p">));</span>
+      <span class="nf">cb</span><span class="p">(</span><span class="nx">data</span><span class="p">);</span>
+    <span class="p">};</span>
+  <span class="p">}</span>
+
+  <span class="nf">processData</span><span class="p">(</span><span class="nx">data</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="p">{</span>
+      <span class="na">name</span><span class="p">:</span> <span class="nx">data</span><span class="p">.</span><span class="nx">name</span><span class="p">,</span>
+      <span class="na">initiatorType</span><span class="p">:</span> <span class="nx">data</span><span class="p">.</span><span class="nx">initiatorType</span><span class="p">,</span>
+      <span class="na">duration</span><span class="p">:</span> <span class="nx">data</span><span class="p">.</span><span class="nx">duration</span><span class="p">,</span>
+    <span class="p">};</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="kd">const</span> <span class="nx">resource</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">Resource</span><span class="p">();</span>
+<span class="nx">resource</span><span class="p">.</span><span class="nf">init</span><span class="p">((</span><span class="nx">data</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+  <span class="nx">console</span><span class="p">.</span><span class="nf">log</span><span class="p">(</span><span class="nx">data</span><span class="p">);</span>
+<span class="p">});</span>
+</pre></table></code></div></div><h2 id="ajax-监控">ajax 监控</h2><div class="language-js highlighter-rouge"><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+</pre><td class="rouge-code"><pre><span class="kd">class</span> <span class="nc">NetworkMonitoring</span> <span class="p">{</span>
+  <span class="nf">xhr</span><span class="p">(</span><span class="nx">cb</span><span class="p">:</span> <span class="nb">Function</span><span class="p">)</span> <span class="p">{</span>
+    <span class="kd">const</span> <span class="nx">Xhr</span> <span class="o">=</span> <span class="nx">XMLHttpRequest</span><span class="p">;</span>
+
+    <span class="kd">const</span> <span class="nx">oldOpen</span> <span class="o">=</span> <span class="nx">Xhr</span><span class="p">.</span><span class="nx">prototype</span><span class="p">.</span><span class="nx">open</span><span class="p">;</span>
+    <span class="nx">Xhr</span><span class="p">.</span><span class="nx">prototype</span><span class="p">.</span><span class="nx">open</span> <span class="o">=</span> <span class="nf">function </span><span class="p">(</span><span class="nx">method</span><span class="p">,</span> <span class="nx">url</span><span class="p">)</span> <span class="p">{</span>
+      <span class="k">this</span><span class="p">.</span><span class="nx">info</span> <span class="o">=</span> <span class="p">{</span>
+        <span class="nx">method</span><span class="p">,</span>
+        <span class="nx">url</span><span class="p">,</span>
+      <span class="p">};</span>
+
+      <span class="k">return</span> <span class="nx">oldOpen</span><span class="p">.</span><span class="nf">apply</span><span class="p">(</span><span class="k">this</span><span class="p">,</span> <span class="nx">arguments</span><span class="p">);</span>
+    <span class="p">};</span>
+
+    <span class="kd">const</span> <span class="nx">oldSend</span> <span class="o">=</span> <span class="nx">Xhr</span><span class="p">.</span><span class="nx">prototype</span><span class="p">.</span><span class="nx">send</span><span class="p">;</span>
+    <span class="nx">Xhr</span><span class="p">.</span><span class="nx">prototype</span><span class="p">.</span><span class="nx">send</span> <span class="o">=</span> <span class="nf">function </span><span class="p">(</span><span class="nx">body</span><span class="p">)</span> <span class="p">{</span>
+      <span class="kd">const</span> <span class="nx">start</span> <span class="o">=</span> <span class="nb">Date</span><span class="p">.</span><span class="nf">now</span><span class="p">();</span>
+      <span class="kd">const</span> <span class="nx">loadedHandler</span> <span class="o">=</span> <span class="p">(</span><span class="nx">type</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="p">{</span>
+        <span class="k">this</span><span class="p">.</span><span class="nx">info</span><span class="p">.</span><span class="nx">time</span> <span class="o">=</span> <span class="nb">Date</span><span class="p">.</span><span class="nf">now</span><span class="p">()</span> <span class="o">-</span> <span class="nx">start</span><span class="p">;</span>
+        <span class="k">this</span><span class="p">.</span><span class="nx">inifo</span><span class="p">.</span><span class="nx">requestSize</span> <span class="o">=</span> <span class="nx">body</span><span class="p">.</span><span class="nx">length</span><span class="p">;</span>
+        <span class="k">this</span><span class="p">.</span><span class="nx">info</span><span class="p">.</span><span class="nx">responseSize</span> <span class="o">=</span> <span class="k">this</span><span class="p">.</span><span class="nx">responseText</span><span class="p">.</span><span class="nx">length</span><span class="p">;</span>
+        <span class="k">this</span><span class="p">.</span><span class="nx">info</span><span class="p">.</span><span class="nx">type</span> <span class="o">=</span> <span class="nx">type</span><span class="p">;</span>
+
+        <span class="nf">cb</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">info</span><span class="p">);</span>
+      <span class="p">};</span>
+
+      <span class="k">this</span><span class="p">.</span><span class="nf">addEventListener</span><span class="p">(</span><span class="dl">"</span><span class="s2">load</span><span class="dl">"</span><span class="p">,</span> <span class="nf">loadedHandler</span><span class="p">(</span><span class="dl">"</span><span class="s2">load</span><span class="dl">"</span><span class="p">),</span> <span class="kc">false</span><span class="p">);</span>
+      <span class="k">this</span><span class="p">.</span><span class="nf">addEventListener</span><span class="p">(</span><span class="dl">"</span><span class="s2">error</span><span class="dl">"</span><span class="p">,</span> <span class="nf">loadedHandler</span><span class="p">(</span><span class="dl">"</span><span class="s2">error</span><span class="dl">"</span><span class="p">),</span> <span class="kc">false</span><span class="p">);</span>
+      <span class="k">this</span><span class="p">.</span><span class="nf">addEventListener</span><span class="p">(</span><span class="dl">"</span><span class="s2">abort</span><span class="dl">"</span><span class="p">,</span> <span class="nf">loadedHandler</span><span class="p">(</span><span class="dl">"</span><span class="s2">abort</span><span class="dl">"</span><span class="p">),</span> <span class="kc">false</span><span class="p">);</span>
+
+      <span class="k">return</span> <span class="nx">oldSend</span><span class="p">.</span><span class="nf">apply</span><span class="p">(</span><span class="k">this</span><span class="p">,</span> <span class="nx">arguments</span><span class="p">);</span>
+    <span class="p">};</span>
+  <span class="p">}</span>
+
+  <span class="nf">fetch</span><span class="p">(</span><span class="nx">cb</span><span class="p">:</span> <span class="nb">Function</span><span class="p">)</span> <span class="p">{</span>
+    <span class="c1">// override fetch...</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+</pre></table></code></div></div><h2 id="页面错误捕捉">页面错误捕捉</h2><div class="language-ts highlighter-rouge"><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+</pre><td class="rouge-code"><pre><span class="kd">class</span> <span class="nc">ErrorHandler</span> <span class="p">{</span>
+  <span class="nf">init</span><span class="p">(</span><span class="nx">cb</span><span class="p">:</span> <span class="nb">Function</span><span class="p">)</span> <span class="p">{</span>
+    <span class="c1">// 前四个参数没有用，因为不准</span>
+    <span class="nb">window</span><span class="p">.</span><span class="nx">onerror</span> <span class="o">=</span> <span class="nf">function </span><span class="p">(</span><span class="nx">message</span><span class="p">,</span> <span class="nx">source</span><span class="p">,</span> <span class="nx">lineno</span><span class="p">,</span> <span class="nx">colno</span><span class="p">,</span> <span class="nx">error</span><span class="p">)</span> <span class="p">{</span>
+      <span class="kd">let</span> <span class="nx">info</span><span class="p">:</span> <span class="p">{</span> <span class="p">[</span><span class="nx">key</span><span class="p">:</span> <span class="kr">string</span><span class="p">]:</span> <span class="kr">any</span> <span class="p">}</span> <span class="o">=</span> <span class="p">{</span>
+        <span class="na">message</span><span class="p">:</span> <span class="nx">error</span><span class="p">.</span><span class="nx">message</span><span class="p">,</span>
+        <span class="na">name</span><span class="p">:</span> <span class="nx">error</span><span class="p">.</span><span class="nx">name</span><span class="p">,</span>
+      <span class="p">};</span>
+
+      <span class="kd">let</span> <span class="nx">stack</span> <span class="o">=</span> <span class="nx">error</span><span class="p">.</span><span class="nx">stack</span><span class="p">;</span>
+      <span class="kd">const</span> <span class="nx">matchUrl</span> <span class="o">=</span> <span class="nx">stack</span><span class="p">.</span><span class="nf">match</span><span class="p">(</span><span class="sr">/:</span><span class="se">\/\/</span><span class="sr">.+</span><span class="se">\d</span><span class="sr">/g</span><span class="p">)[</span><span class="mi">0</span><span class="p">];</span>
+      <span class="nx">console</span><span class="p">.</span><span class="nf">log</span><span class="p">(</span><span class="dl">"</span><span class="s2">matchUrl</span><span class="dl">"</span><span class="p">,</span> <span class="nx">matchUrl</span><span class="p">);</span> <span class="c1">// ://localhost:1234/ts.f2f44312.js:136:13</span>
+      <span class="kd">const</span> <span class="nx">matchFile</span> <span class="o">=</span> <span class="nx">matchUrl</span><span class="p">.</span><span class="nf">match</span><span class="p">(</span><span class="sr">/:</span><span class="se">\/\/</span><span class="sr">.+</span><span class="se">\.</span><span class="sr">js/</span><span class="p">)[</span><span class="mi">0</span><span class="p">];</span> <span class="c1">// ://localhost:1234/ts.f2f44312.js</span>
+      <span class="nx">console</span><span class="p">.</span><span class="nf">log</span><span class="p">(</span><span class="nx">matchFile</span><span class="p">);</span>
+      <span class="kd">const</span> <span class="p">[,</span> <span class="nx">row</span><span class="p">,</span> <span class="nx">column</span><span class="p">]</span> <span class="o">=</span> <span class="nx">matchUrl</span><span class="p">.</span><span class="nf">match</span><span class="p">(</span><span class="sr">/:</span><span class="se">(\d</span><span class="sr">+</span><span class="se">)</span><span class="sr">:</span><span class="se">(\d</span><span class="sr">+</span><span class="se">)</span><span class="sr">/</span><span class="p">);</span>
+      <span class="nx">info</span><span class="p">.</span><span class="nx">fileName</span> <span class="o">=</span> <span class="nx">matchFile</span><span class="p">;</span>
+      <span class="nx">info</span><span class="p">.</span><span class="nx">row</span> <span class="o">=</span> <span class="nx">row</span><span class="p">;</span>
+      <span class="nx">info</span><span class="p">.</span><span class="nx">column</span> <span class="o">=</span> <span class="nx">column</span><span class="p">;</span>
+      <span class="nf">cb</span><span class="p">(</span><span class="nx">info</span><span class="p">);</span>
+    <span class="p">};</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="kd">const</span> <span class="nx">errorHandler</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">ErrorHandler</span><span class="p">();</span>
+<span class="nx">errorHandler</span><span class="p">.</span><span class="nf">init</span><span class="p">((</span><span class="nx">info</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+  <span class="nx">console</span><span class="p">.</span><span class="nf">log</span><span class="p">(</span><span class="nx">info</span><span class="p">);</span>
+<span class="p">});</span>
+
+<span class="nf">setTimeout</span><span class="p">(()</span> <span class="o">=&gt;</span> <span class="p">{</span>
+  <span class="kd">function</span> <span class="nf">test</span><span class="p">()</span> <span class="p">{</span>
+    <span class="kd">const</span> <span class="nx">x</span> <span class="o">=</span> <span class="nx">xx</span><span class="p">;</span>
+  <span class="p">}</span>
+
+  <span class="nf">test</span><span class="p">();</span>
+<span class="p">},</span> <span class="mi">1000</span><span class="p">);</span>
+</pre></table></code></div></div><h1 id="lighthouse-api">lighthouse api</h1><p>https://github.com/GoogleChrome/lighthouse</p><div class="language-bash highlighter-rouge"><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+</pre><td class="rouge-code"><pre>npm <span class="nb">install</span> <span class="nt">-g</span> lighthouse
+
+lighthouse https://airhorner.com/
+</pre></table></code></div></div><p>可以拿到网页版 lighthouse 的所有信息，根据公司需求来定制监控内容，每次上线前跑一次脚本，不符合规则的内容可以提早检测出来。</p></div><div class="post-tail-wrapper text-muted"><div class="post-tags"> <i class="fa fa-tags fa-fw mr-1"></i> <a href="/tags/2018/" class="post-tag no-text-decoration" >2018</a></div><div class="post-tail-bottom d-flex justify-content-between align-items-center mt-3 pt-5 pb-2"><div class="license-wrapper"> This post is licensed under <a href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a> by the author.</div><div class="share-wrapper"> <span class="share-label text-muted mr-1">Share</span> <span class="share-icons"> <i class="fa-fw fas fa-link small" onclick="copyLink()" data-toggle="tooltip" data-placement="top" title="Copy link"></i> </span></div></div></div></div></div><div id="panel-wrapper" class="col-xl-3 pl-2 text-muted topbar-down"><div class="access"><div id="access-tags"> <span>Trending Tags</span><div class="d-flex flex-wrap mt-3 mb-1 mr-3"> <a class="post-tag" href="/tags/2018/">2018</a> <a class="post-tag" href="/tags/2017/">2017</a> <a class="post-tag" href="/tags/2019/">2019</a> <a class="post-tag" href="/tags/2020/">2020</a> <a class="post-tag" href="/tags/2021/">2021</a> <a class="post-tag" href="/tags/2016/">2016</a></div></div></div><script src="https://cdn.jsdelivr.net/gh/afeld/bootstrap-toc@1.0.1/dist/bootstrap-toc.min.js"></script><div id="toc-wrapper" class="pl-0 pr-4 mb-5"> <span class="pl-3 pt-2 mb-2">Contents</span><nav id="toc" data-toggle="toc"></nav></div></div></div><div class="row"><div class="col-12 col-lg-11 col-xl-8"><div id="post-extend-wrapper" class="pl-1 pr-1 pl-sm-2 pr-sm-2 pl-md-4 pr-md-4"><div id="related-posts" class="mt-5 mb-2 mb-sm-4"><h3 class="pt-2 mt-1 mb-4 ml-1" data-toc-skip>Further Reading</h3><div class="card-deck mb-4"><div class="card"> <a href="/posts/%E5%AE%9E%E7%8E%B0%E4%B8%80%E4%B8%AALazy-Load/"><div class="card-body"> <span class="timeago small" > Feb 2, 2018 <i class="unloaded">2018-02-02T00:00:00+08:00</i> </span><h3 class="pt-0 mt-1 mb-3" data-toc-skip>实现一个Lazy-Load</h3><div class="text-muted small"><p> 我们可以在页面打开的时候把首屏的图片资源加载出来，等用户滚动的时候再把页面其他部分呈现。 html &lt;!DOCTYPE html&gt; &lt;html lang="en"&gt; &lt;head&gt; &lt;meta charset="UTF-8" /&gt; &lt;meta name="viewport" content="width=device...</p></div></div></a></div><div class="card"> <a href="/posts/JS%E5%86%85%E5%AD%98%E5%88%86%E6%9E%90/"><div class="card-body"> <span class="timeago small" > Feb 3, 2018 <i class="unloaded">2018-02-03T00:00:00+08:00</i> </span><h3 class="pt-0 mt-1 mb-3" data-toc-skip>JS内存分析</h3><div class="text-muted small"><p> 使用 Chrome 和 DevTools 查找影响页面性能的内存问题 内存泄漏 内存膨胀 频繁的垃圾回收 内存问题 页面的性能随着时间的延长越来越差。 这可能是内存泄漏的症状。 内存泄漏是指，页面中的错误导致页面随着时间的延长使用的内存越来越多。 页面的性能一直很糟糕。 这可能是内存膨胀的症状。 内存膨胀是指，页面为达到最佳速度而使用的内存比本应使用的内存多。...</p></div></div></a></div><div class="card"> <a href="/posts/Web%E9%99%80%E8%9E%BA%E4%BB%AA%E4%B8%8E%E9%87%8D%E5%8A%9B%E6%84%9F%E5%BA%94/"><div class="card-body"> <span class="timeago small" > Mar 20, 2018 <i class="unloaded">2018-03-20T00:00:00+08:00</i> </span><h3 class="pt-0 mt-1 mb-3" data-toc-skip>Web陀螺仪与重力感应</h3><div class="text-muted small"><p> 陀螺仪与重力感应配置与注意点： API 使用 临界点处理 翻转处理 iOS 12.2 政策 devicemotion function init_devicemotion_listener() { if ((window as any).DeviceMotionEvent) { window.addEventListener('devicemotion'...</p></div></div></a></div></div></div><div class="post-navigation d-flex justify-content-between"> <a href="/posts/AudioContext%E8%A2%AB%E5%8A%A8%E5%85%B3%E9%97%AD/" class="btn btn-outline-primary" prompt="Older"><p>AudioContext被动关闭</p></a> <a href="/posts/JAVASCRIPT-BUT-LESS-IFFY/" class="btn btn-outline-primary" prompt="Newer"><p>JAVASCRIPT BUT LESS IFFY</p></a></div></div></div></div><footer class="d-flex w-100 justify-content-center"><div class="d-flex justify-content-between align-items-center"><div class="footer-left"><p class="mb-0"> © 2024 <a href="https://github.com/ringcrl">chenng</a>.<p class="mb-0"> <a href="https://beian.miit.gov.cn/" target="_blank" rel="noopener"> 粤ICP备18131461号 </a></p></p></div><div class="footer-right"></div></div></footer></div><div id="search-result-wrapper" class="d-flex justify-content-center unloaded"><div class="col-12 col-sm-11 post-content"><div id="search-hints"><h4 class="text-muted mb-4">Trending Tags</h4><a class="post-tag" href="/tags/2018/">2018</a> <a class="post-tag" href="/tags/2017/">2017</a> <a class="post-tag" href="/tags/2019/">2019</a> <a class="post-tag" href="/tags/2020/">2020</a> <a class="post-tag" href="/tags/2021/">2021</a> <a class="post-tag" href="/tags/2016/">2016</a></div><div id="search-results" class="d-flex flex-wrap justify-content-center text-muted mt-3"></div></div></div></div><div id="mask"></div><a id="back-to-top" href="#" aria-label="back-to-top" class="btn btn-lg btn-box-shadow" role="button"> <i class="fas fa-angle-up"></i> </a> <script src="https://cdn.jsdelivr.net/npm/simple-jekyll-search@1.7.3/dest/simple-jekyll-search.min.js"></script> <script> SimpleJekyllSearch({ searchInput: document.getElementById('search-input'), resultsContainer: document.getElementById('search-results'), json: '/assets/js/data/search.json', searchResultTemplate: '<div class="pl-1 pr-1 pl-sm-2 pr-sm-2 pl-lg-4 pr-lg-4 pl-xl-0 pr-xl-0"> <a href="chenng.cn{url}">{title}</a><div class="post-meta d-flex flex-column flex-sm-row text-muted mt-1 mb-1"> {categories} {tags}</div><p>{snippet}</p></div>', noResultsText: '<p class="mt-5">Oops! No result founds.</p>', templateMiddleware: function(prop, value, template) { if (prop === 'categories') { if (value === '') { return `${value}`; } else { return `<div class="mr-sm-4"><i class="far fa-folder fa-fw"></i>${value}</div>`; } } if (prop === 'tags') { if (value === '') { return `${value}`; } else { return `<div><i class="fa fa-tag fa-fw"></i>${value}</div>`; } } } }); </script>
